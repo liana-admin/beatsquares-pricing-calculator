@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeatSquares Pricing Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>BeatSquares Pricing Calculator</h1>
+  </header>
+
+  <main>
+    <!-- INPUT PANEL -->
+    <section class="panel inputs-panel">
+      <h2>Konfiguration</h2>
+
+      <h3>Qualität</h3>
+      <p class="hint">Strategy + Fact Verification. Nur berechnet, wenn höher als im Tier inkludiert.</p>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="quality" value="light" checked>
+          <span>Light</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="quality" value="standard">
+          <span>Standard</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="quality" value="high">
+          <span>High</span>
+        </label>
+      </div>
+
+      <h3>Gewünschter Output / Monat</h3>
+
+      <div class="input-group">
+        <label for="newsletters">Newsletter</label>
+        <input type="number" id="newsletters" min="0" max="500" value="8">
+      </div>
+
+      <div class="input-group">
+        <label for="podcasts">Podcast-Episoden</label>
+        <input type="number" id="podcasts" min="0" max="200" value="0">
+      </div>
+
+      <div class="input-group">
+        <label for="channels">Messaging Channels</label>
+        <input type="number" id="channels" min="0" max="20" value="1">
+      </div>
+
+      <div class="input-group">
+        <label for="days-per-week">Messaging Tage / Woche</label>
+        <div class="range-wrapper">
+          <input type="range" id="days-per-week" min="0" max="7" value="2">
+          <span id="days-display" class="range-value">2</span>
+        </div>
+      </div>
+
+      <div class="computed-info" id="channel-days-info">
+        = <strong id="channel-days-display">8</strong> Channel-Tage / Monat
+      </div>
+
+      <h3>Externe Quellen</h3>
+      <p class="hint">Nur berechnet, wenn über inkludiertem Limit.</p>
+      <div class="input-group">
+        <label for="sources">Quellen pro Medium</label>
+        <input type="number" id="sources" min="0" max="50" value="3">
+      </div>
+    </section>
+
+    <!-- RESULTS PANEL -->
+    <section class="panel results-panel">
+      <h2>Ergebnis</h2>
+
+      <div id="tier-badge" class="tier-badge"></div>
+      <div id="tier-reason" class="tier-reason"></div>
+      <div id="upgrade-hint" class="upgrade-hint"></div>
+      <div id="contact-sales-warning" class="contact-sales-warning"></div>
+
+      <h3>Preisübersicht</h3>
+      <div id="breakdown" class="breakdown"></div>
+
+      <h3>Inkludiert vs. Bedarf</h3>
+      <div id="transparency" class="transparency"></div>
+
+      <div class="actions">
+        <button id="copy-link" title="Link mit aktueller Konfiguration kopieren">Link kopieren</button>
+        <button id="copy-breakdown" title="Preisübersicht als Text kopieren">Breakdown kopieren</button>
+      </div>
+      <div id="copy-feedback" class="copy-feedback"></div>
+    </section>
+  </main>
+
+  <!-- TIER CAROUSEL -->
+  <section class="tier-carousel" id="tier-carousel">
+    <button class="carousel-arrow carousel-prev" id="carousel-prev" aria-label="Vorheriges Tier">&lsaquo;</button>
+    <div class="carousel-card" id="carousel-card"></div>
+    <button class="carousel-arrow carousel-next" id="carousel-next" aria-label="Nächstes Tier">&rsaquo;</button>
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>
