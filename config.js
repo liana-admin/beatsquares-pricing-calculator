@@ -14,7 +14,7 @@ const CONFIG = {
         newsletters_per_month: 8,
         podcasts_per_month: 0,
         messaging_channel_days_per_month: 8,
-        quality_level: "light",
+        quality_level: "standard",
         sources_per_medium: 3
       },
       constraints: {
@@ -35,7 +35,7 @@ const CONFIG = {
         newsletters_per_month: 30,
         podcasts_per_month: 20,
         messaging_channel_days_per_month: 84,
-        quality_level: "standard",
+        quality_level: "extended",
         sources_per_medium: 5
       },
       constraints: {
@@ -56,7 +56,7 @@ const CONFIG = {
         newsletters_per_month: 100,
         podcasts_per_month: 50,
         messaging_channel_days_per_month: 168,
-        quality_level: "high",
+        quality_level: "custom",
         sources_per_medium: 15
       },
       constraints: {
@@ -73,13 +73,13 @@ const CONFIG = {
 
   addons: {
     quality: {
-      levels: ["light", "standard", "high"],
+      levels: ["standard", "extended", "custom"],
       // Delta pricing: add-on cost = price[desired] - price[included_in_tier]
       // Applied GLOBALLY (once per contract, not per medium)
       price_by_level: {
-        light: 0,
-        standard: 350,
-        high: 900
+        standard: 0,
+        extended: 350,
+        custom: 900
       }
     },
     sources: {

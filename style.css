@@ -525,12 +525,122 @@ main {
 
 .carousel-dot.active { background: var(--color-accent); }
 
-/* Responsive (basic: stack on narrow screens) */
+/* Responsive */
 @media (max-width: 840px) {
+  header {
+    padding: 12px 16px;
+  }
+
+  header h1 {
+    font-size: 17px;
+  }
+
   main {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 16px auto;
+    padding: 0 12px;
   }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .panel h2 {
+    font-size: 15px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+
+  .tier-carousel {
+    padding: 0 12px 28px;
+    gap: 8px;
+  }
+
+  .carousel-card {
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .carousel-card .card-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .carousel-card .card-title {
+    font-size: 16px;
+  }
+
+  .carousel-card .card-price {
+    font-size: 18px;
+  }
+
+  .carousel-card .card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+  }
+
+  .carousel-card .card-overages {
+    line-height: 1.8;
+  }
+
+  .carousel-card .card-overages span {
+    margin-right: 12px;
+  }
+
+  .carousel-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  /* Breakdown table: keep amounts visible */
+  .breakdown table {
+    font-size: 13px;
+  }
+
+  .breakdown .item-detail {
+    font-size: 11px;
+    padding-left: 8px;
+  }
+
+  .breakdown .total td {
+    font-size: 15px;
+  }
+
+  /* Transparency table: scroll if needed */
+  .transparency {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .transparency table {
+    font-size: 12px;
+    min-width: 380px;
+  }
+
+  .transparency th,
+  .transparency td {
+    padding: 5px 6px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
   .carousel-card .card-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .radio-label span {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .breakdown td:last-child {
+    font-size: 12px;
   }
 }

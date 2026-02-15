@@ -2,8 +2,8 @@
 (function () {
   "use strict";
 
-  var QUALITY_ORDER = { light: 0, standard: 1, high: 2 };
-  var QUALITY_LABELS = { light: "Light", standard: "Standard", high: "High" };
+  var QUALITY_ORDER = { standard: 0, extended: 1, custom: 2 };
+  var QUALITY_LABELS = { standard: "Standard", extended: "Extended", custom: "Custom" };
 
   var els = {};
   var lastTierId = null;
@@ -74,7 +74,7 @@
 
   function getInputs() {
     var qualityRadio = document.querySelector('input[name="quality"]:checked');
-    var quality = qualityRadio ? qualityRadio.value : "light";
+    var quality = qualityRadio ? qualityRadio.value : "standard";
 
     return {
       media_count: 1,
@@ -445,7 +445,7 @@
     // Quality add-on
     if (result.qualityApplicable) {
       rows.push(
-        '<tr><td class="item-label">Quality Add-on</td><td>' +
+        '<tr><td class="item-label">Setup Add-on</td><td>' +
           fmt(result.qualityAddon) +
           "</td></tr>"
       );
@@ -625,7 +625,7 @@
     }
     rows.push(
       transparencyRow(
-        "Quality",
+        "Setup",
         QUALITY_LABELS[result.included.quality],
         QUALITY_LABELS[result.inputs.quality_level],
         qText,
@@ -710,7 +710,7 @@
 
     if (r.qualityApplicable) {
       lines.push(
-        "Quality Add-on (" +
+        "Setup Add-on (" +
           QUALITY_LABELS[r.qualityFrom] +
           " -> " +
           QUALITY_LABELS[r.qualityTo] +
@@ -899,7 +899,7 @@
           '<div class="card-item-value">' + tier.included.messaging_channel_days_per_month + " Channel-Tage</div>" +
         "</div>" +
         '<div class="card-item">' +
-          '<div class="card-item-label">Quality</div>' +
+          '<div class="card-item-label">Setup</div>' +
           '<div class="card-item-value">' + qualityLabel + "</div>" +
         "</div>" +
         '<div class="card-item">' +
