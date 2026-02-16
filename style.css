@@ -19,12 +19,18 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.5;
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 header {
@@ -47,6 +53,7 @@ main {
   max-width: 1200px;
   margin: 24px auto;
   padding: 0 24px;
+  width: 100%;
 }
 
 /* Panels */
@@ -544,6 +551,7 @@ main {
 
   .panel {
     padding: 16px;
+    overflow: hidden;
   }
 
   .panel h2 {
@@ -555,11 +563,13 @@ main {
   .tier-carousel {
     padding: 0 12px 28px;
     gap: 8px;
+    max-width: 100%;
   }
 
   .carousel-card {
     padding: 16px;
     min-height: auto;
+    min-width: 0;
   }
 
   .carousel-card .card-header {
@@ -585,7 +595,8 @@ main {
   }
 
   .carousel-card .card-overages span {
-    margin-right: 12px;
+    display: block;
+    margin-right: 0;
   }
 
   .carousel-arrow {
@@ -594,9 +605,20 @@ main {
     font-size: 18px;
   }
 
-  /* Breakdown table: keep amounts visible */
+  /* Breakdown: allow amounts to wrap */
+  .breakdown {
+    overflow: hidden;
+  }
+
   .breakdown table {
     font-size: 13px;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .breakdown td:last-child {
+    white-space: normal;
+    word-break: break-word;
   }
 
   .breakdown .item-detail {
@@ -608,20 +630,29 @@ main {
     font-size: 15px;
   }
 
-  /* Transparency table: scroll if needed */
+  /* Transparency table: compact on mobile */
   .transparency {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .transparency table {
     font-size: 12px;
-    min-width: 380px;
+    min-width: 340px;
   }
 
   .transparency th,
   .transparency td {
     padding: 5px 6px;
+  }
+
+  /* Inputs */
+  .input-group input[type="number"] {
+    font-size: 16px; /* prevent iOS zoom on focus */
   }
 
   .actions {
@@ -630,6 +661,14 @@ main {
 }
 
 @media (max-width: 400px) {
+  main {
+    padding: 0 8px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
   .carousel-card .card-grid {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -640,7 +679,20 @@ main {
     font-size: 12px;
   }
 
-  .breakdown td:last-child {
+  .breakdown table {
     font-size: 12px;
+  }
+
+  .transparency table {
+    min-width: 300px;
+    font-size: 11px;
+  }
+
+  .tier-carousel {
+    padding: 0 8px 28px;
+  }
+
+  .carousel-card {
+    padding: 12px;
   }
 }
